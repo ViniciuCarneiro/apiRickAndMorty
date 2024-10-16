@@ -1,5 +1,8 @@
 package com.api.rickandmorty.apiRickAndMorty.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import java.io.Serializable;
@@ -11,10 +14,16 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Personagem implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    @JsonProperty(value = "id")
     private Long id;
+
+    @JsonProperty(value = "name")
     private String name;
-    private String status;
+
+    @JsonProperty(value = "species")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String species;
-    private String gender;
-    private String image;
 }

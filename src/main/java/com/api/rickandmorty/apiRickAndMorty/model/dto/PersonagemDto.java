@@ -17,3 +17,4 @@ public class PersonagemDto implements Serializable {
     @JsonProperty("results")
     private List<Personagem> results;
 }
+

@@ -10,6 +10,8 @@ public interface ApiRickAndMortyIntegration {
 
     @GetMapping("/character")
     PersonagemDto getCharacters(
-            @RequestParam(value = "page", required = false) int page
+            @RequestParam(value = "page", required = false) Long page,
+            @RequestParam(value = "name", required = false) String name,
+            @RequestParam(value = "status") String status
     );
 }

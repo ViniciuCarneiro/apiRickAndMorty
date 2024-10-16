@@ -13,8 +13,19 @@ public class PersonagensService {
     private ApiRickAndMortyIntegration integration;
 
     @Cacheable(value = "personagens", key = "#page")
-    public PersonagemDto getAll(int page) {
+    public PersonagemDto getAll(Long page, String name) {
         System.out.println("Dados recuperados da API externa");
-        return integration.getCharacters(page);
+
+        String status = "alive";
+
+        PersonagemDto dto = integration.getCharacters(page, name,status);
+
+        if (name == null) {
+            for (int i = 0; i < dto.getResults().size(); i++) {
+                dto.getResults().get(i).setSpecies(null);
+            }
+        }
+
+        return dto;
     }
 }
